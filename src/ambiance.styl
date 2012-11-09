@@ -1,0 +1,220 @@
+@import 'nib'
+
+// FONTS --change that if you want a different
+//         source (default is Google Webfonts)
+
+/// Ubuntu Mono: 700 and 700-italic
+@import url('http://fonts.googleapis.com/css?family=Ubuntu+Mono:700,700italic');
+
+// GENERIC STYLES
+
+.ace_gutter-icon
+  display none
+  visibility hidden
+  position absolute
+  left 3px
+  //TODO
+
+
+// MAIN STYLING
+
+.nace-ambiance
+
+  font-family 'Ubuntu Mono', monospace
+  font-weight bold
+  font-size   14px
+  line-height 16px
+
+  background-color #202020
+  &, .ace_gutter-layer
+    background-image url('noise.png')
+    background-repeat repeat
+
+  /**
+  border 2px solid rgb(159, 159, 159)
+  &.ace_focus
+    border 2px solid #327fbd
+  **/
+  //TODO: indent guides (ajaxorg/ace@a6ce721d9)
+  //FIXME: scrollbar!
+
+  // THE GUTTER
+
+  .ace_gutter
+    background #3d3d3d linear-gradient(left, #3d3d3d, #333)
+    color #222
+    text-shadow 0px 1px 1px #4d4d4d
+    border-right 1px solid #4d4d4d
+
+    .ace_gutter-cell
+      background none
+
+      .ace_fold-widget
+        text-align center
+
+        background none
+        border none
+        box-shadow none
+
+        &:hover
+          color #777
+
+        &.ace_start:after
+          content '▾'
+        &.ace_end:after
+          //content '▴'
+        &.ace_closed:after
+          content '‣'
+
+      .ace_info:before
+        @extend .ace_gutter-icon
+        //content
+      .ace_warning:before
+        @extend .ace_gutter-icon
+        //content
+      .ace_error:before
+        @extend .ace_gutter-icon
+        //content
+
+  // THE SCROLLER / CONTENT
+  .ace_scroller
+    box-shadow inset 0 0 10px rgba(0,0,0,1)
+    .ace_content
+
+      // order of layers
+
+      .ace_cursor-layer
+        z-index 59
+      .ace_marker-layer>.ace_selection
+        z-index 58
+
+      .ace_text-layer
+        z-index 55
+      .ace_marker-layer>.ace_selected-word
+        z-index 54
+
+      .ace_marker-layer>.ace_active-line
+        z-index 52
+      .ace_print-margin-layer
+        z-index 51
+
+      // MARKER LAYER
+      .ace_marker-layer
+        z-index auto !important
+
+        .ace_selected-word
+          background-color #3F475D
+          box-shadow 0 0 4px rgba(0,0,0,1)
+          border-radius 4px
+
+        .ace_selection
+          background-color rgba(221, 240, 255, .2)
+
+        .ace_active-line
+          background-color rgba(255,255,255, .031)
+
+        .ace_bracket
+          margin -1px 0 0 -1px
+          border 1px solid rgba(255,255,255, .25);
+
+        .ace_step /**FIXME: what's this?!**/
+          background-color rgb(198,219,174)
+          
+
+      // TEXT LAYER
+      .ace_text-layer
+        color #e6e1dc
+        padding 0 8px
+
+        // main highlighting classes
+
+        .ace_invisible
+          color rgba(255,255,255, .085)
+
+        .ace_paren
+          color #24c2c7
+
+        .ace_keyword
+          color #cda869
+
+        .ace_operator
+          color #fa8d6a
+
+        .ace-statement
+          color #cda869
+
+        .ace_constant
+          color #cf7ea9
+          &.ace_language
+            color #cf7ea9
+          &.ace_numeric
+            color #78cf8a
+
+        .ace_string
+          color #8f9d6a
+          &.ace_regexp
+            color #dad085
+
+        .ace_comment
+          font-style italic
+          color rgba(255,255,255, .238)
+
+          &.ace_doc.ace_tag
+            font-style normal
+            color rgba(255,255,255, .314)
+
+        .ace_definition, .ace_type
+          color #aac6e3
+
+        .ace_variable
+          color #9999cc
+
+          &.ace_language
+            color #9b859d
+
+        // support classes
+
+        .ace_invalid, .ace_deprecated
+          font-style italic
+          color #d2a8a1
+
+        .ace_invalid
+          text-decoration underline
+
+          &.ace_illegal
+            color #f8f8f8
+            background-color rgba(86,45,86, .75)
+
+        .ace_deprecated
+          text-decoration overline
+
+        .ace_support
+          color #9b859d
+          &.ace_function
+            color #dad085
+
+        .ace_function.ace_buildin
+          color #9b859d
+
+        // other language-specific classes
+
+        .ace_xml-pe
+          color #494949
+
+
+      // PRINT MARGIN LAYER
+      .ace_print-margin-layer
+        .ace_print-margin
+          border-left 1px dotted rgba(255,255,255, .033)
+          background-color rgba(255,255,255, .027)
+          right 0
+
+      // CURSOR LAYER
+      .ace_cursor
+        border-left 1px solid rgba(255,255,255, .61)
+        &.ace_overwrite
+          border-left 0 none
+          border-bottom 1px solid rgba(255,255,255, .61)
+        &.ace_hidden
+          opacity .2
+
