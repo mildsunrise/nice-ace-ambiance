@@ -1,0 +1,5 @@
+#!/bin/bash
+# Compile this theme.
+cd `dirname "$0"`
+
+manager/loader.sh $*

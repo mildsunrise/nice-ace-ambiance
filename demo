@@ -1,0 +1,10 @@
+#!/bin/bash
+# Compile this theme and
+# run a demo server locally.
+cd `dirname "$0"`
+
+manager/loader.sh demo $*
+
+r=$?
+echo #Finish the line
+exit $?
