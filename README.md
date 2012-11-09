@@ -1,12 +1,15 @@
-> This is a member of the [nice-ace](https://github.com/jmendeth/nice-ace) collection.
+> This is a member of the [nice-ace](https://github.com/jmendeth/nice-ace) collection.  
+> License, other themes and common facts are listed there.
 
 # Ambiance
 
-**[Click here](http://TODO) to see a live demo or  
-read "Sample Server" below to launch the server yourself.**
+<!--**[Click here](http://TODO) to see a live demo or-->
 
-Originally copied from [its CodeMirror equivalent](http://codemirror.net/demo/theme.html?ambiance), with  
-improvements from @Gozala, @jmendeth, @danyaPostfactum and @nightwing,  
+**Read [How to Use](#how-to-use) below for how to launch a _demo server_,  
+_use_ or _hack_ on this theme, it's super easy.**
+
+Originally copied from [its CodeMirror equivalent](http://codemirror.net/demo/theme.html?ambiance), with improvements  
+from @Gozala, @jmendeth, @danyaPostfactum and @nightwing,  
 this theme features **bright**, **pastel** colors over a **dark** and slightly  
 **noised** background.
 
@@ -19,7 +22,7 @@ other themes, as it happens on [Woodance](https://github.com/jmendeth/nice-ace-w
 
 ## History
 
-It was partially imported into Ace (see ajaxorg/ace#936), but this version has several improvements:
+It was partially imported into Ace (see [ajaxorg/ace#936](https://github.com/ajaxorg/ace/pull/936)), but this version has several improvements:
 
  - No Mac-only font (uses the open-source [Ubuntu Mono](http://www.google.com/webfonts/specimen/Ubuntu%20Mono))
  - Has nice icons (via [Glyphicons](http://glyphicons.com))
