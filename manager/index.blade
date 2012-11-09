@@ -1,0 +1,242 @@
+!!! 5
+! <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+head
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+  title Ambiance theme
+  :stylus
+    //@import 'nib'//FIXME
+    @import url('http://fonts.googleapis.com/css?family=IM+Fell+English:400italic');
+    @import url('http://fonts.googleapis.com/css?family=Ubuntu:400,700');
+    .canvas
+      display block
+      overflow hidden
+      position relative
+    .no-select
+      cursor default
+      -webkit-user-select none
+      -moz-user-select none
+      -ms-user-select none
+      -o-user-select none
+      user-select none
+    .js-required
+      display none
+      .no-js &
+        display block !important
+    .spinner
+      background-image url('/img/loaderide-black.gif')
+      width  32px
+      height 32px
+      display inline-block
+    .glyph-huge-warning
+      //TODO
+    
+    body
+      padding 0
+      margin 0
+    #cursor
+      position fixed
+      width 100%
+      height 100%
+      z-index 9999
+    #root
+      @extend .no-select
+    #background
+      position absolute
+      z-index -100
+      width 100%
+      height 100%
+      background-image url('/img/warty-final-ubuntu.jpg')
+      background-size cover
+      min-width  900px
+      min-height 700px
+    
+    #lead
+      @extend .no-select
+      z-index 2
+      position absolute
+      background-color rgba(0,0,0,.3)
+      box-shadow 0 0 15px rgba(0,0,0,.7) inset
+      border-radius 0 0 10px 0
+      color white
+      padding 11px 15px
+      font-size 15px
+      line-height 1.1em
+      font-family 'ubuntu', 'open sans', 'droid sans', sans-serif
+      width 500px
+      text-shadow 0 0 3px rgba(0, 0, 0, 0.6)
+    
+      p
+        margin .3em 0
+      .editing
+        text-shadow none
+        font-size .75em
+      a
+        text-decoration none
+        color #0088CC
+        &:hover
+          color #96CDEC
+    
+    .window
+      @extend .no-select
+      top 100px
+      left 100px
+      display inline-block
+      z-index 5
+      position absolute
+      background-color #3c3b37
+      background-image url('/img/window-cgradient.png')
+      background-position bottom left
+      background-repeat repeat-x
+      border-radius 8px 8px 0 0
+      box-shadow 0 0 5px rgba(0,0,0,.7)
+      .titlebar
+        border-radius 9px 9px 0 0
+        height 28px
+        background-image url('/img/window-titlebar-nf.png')
+      &.focus
+        box-shadow 0 1px 12px rgba(0,0,0,.7)
+        .titlebar
+          background-image url('/img/window-titlebar.png')
+    
+      .contents
+        margin 0 1px 1px 1px
+        width 750px
+        height 450px
+        background-color #f2f1f0
+        @extend .canvas
+    
+    .placeholder
+      @extend .no-select
+      z-index 100
+      position absolute
+      width 100%
+      height 100%
+      overflow overlay
+    
+      background-image url('/js/noise.png')
+      background-color #3d3d3d
+      color #cdcdcd
+      text-align center
+      font-family 'IM Fell English', serif
+      font-style italic
+      font-size 18px
+      div
+        vertical-align middle
+        top 50%
+        position relative
+        p
+          margin .8em 0
+    
+    #loading.placeholder
+      background-color #272727
+      div
+        margin-top -37px
+    
+    .jsbanner
+      @extend .js-required
+      @extend .placeholder
+      font-size 26px
+      z-index 101
+    
+    #editor
+      -webkit-user-select text
+      -moz-user-select text
+      -ms-user-select text
+      -o-user-select text
+      user-select text //FIXME
+      width 100%
+      height 100%
+
+  script(src="/js/require-jquery.js" type="text/javascript" charset="utf-8")
+  :js
+    require.config({
+      baseUrl: '/js',
+      paths: {
+        "jquery-ui": "jquery-ui-1.9.0.custom"
+      }
+    });
+    require(['jquery'], function($) {
+      $('html').removeClass('no-js');
+      $(function() {
+        var b = $(document)
+        var w = $('.window')
+        w.css('left', (b.width()-w.width())/2);
+        w.css('top', (b.height()-w.height())/2);
+      });
+    });
+
+body
+  #cursor(style="display:none")
+  #root
+    #background
+    #lead
+      p! A live demostration of the <b>Ambiance</b> theme.
+      p
+        !
+          I've choosen Ubuntu because its default theme is also called "Ambiance",
+          and it's also dark, so they look great together.
+      p.editing! <strong>Note:</strong> you're editing <a href="http://TODO" target="_blank">StylExpress</a>, a simple-to-use, selective Stylus rendering helper.
+
+    .window.focus
+      .titlebar
+        span.buttons
+          i.close
+          i.iconify
+          i.maximize
+      .contents
+        .jsbanner
+          div
+            p
+              i.glyph-warning
+            p! You need to have JavaScript<br />enabled to use the editor.
+        #loading.placeholder
+          div
+            p
+              i.spinner
+            p! Loading editor&hellip;
+        #editor= code//TODO:buttons, icons, placeholder_icons
+
+  :js
+    //Init window manager first
+    require(['jquery','jquery-ui'], function($) {
+      $('#lead,#background').disableSelection();
+      // Window handle cursor
+      $('.window .titlebar').mousedown(function(e) {
+        if (e.button==0) $('#cursor').css('cursor', 'move').css('display','');
+      });
+      // Window focus
+      $('body').mousedown(function(e) {
+        var w = $('.window');
+        if (w.has(e.target).length) w.addClass('focus');
+        else w.removeClass('focus');
+      }).mouseup(function(e) {
+        $('#cursor').css('display', 'none');
+      });
+      // Window dragging
+      $('.window').draggable({
+        handle: '.titlebar',
+        addClasses: false,
+        containment: 'document'
+      });
+    
+    
+      //Init ACE
+      require(['ace/ace'], function(ace) {
+        var editor = ace.edit('editor');
+    
+        editor.setTheme('ambiance');
+        editor.getSession().setMode("ace/mode/javascript");    
+        editor.setShowInvisibles(true);
+    
+        setTimeout(function() {
+          $('#loading').remove();
+        }, 1000);
+      });
+    });
+
+! </html>
