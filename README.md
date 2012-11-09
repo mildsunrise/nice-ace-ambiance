@@ -21,7 +21,7 @@ other themes, as it happens on [Woodance](https://github.com/jmendeth/nice-ace-w
 
 It was partially imported into Ace (see ajaxorg/ace#936), but this version has several improvements:
 
- - No Mac-only font (uses the open-source [Inconsolata](http://www.google.com/webfonts/specimen/Ubuntu%20Mono))
+ - No Mac-only font (uses the open-source [Ubuntu Mono](http://www.google.com/webfonts/specimen/Ubuntu%20Mono))
  - Has nice icons (via [Glyphicons](http://glyphicons.com))
  - Noisy background (missing in Ace)
  - Shadowed icons
