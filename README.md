@@ -1,4 +1,4 @@
-> This is a member of the [nice-ace](https://github.com/jmendeth/nice-ace) collection.  
+> This is a member of the [nice-ace](https://github.com/jmendeth/nice-ace) collection.
 > License, other themes and common facts are listed there.
 
 # Ambiance
@@ -17,8 +17,10 @@ It's best suited on a **minimalist** environment, with not-too-many controls.
 As a general rule, make sure to not have large editors: that can be stressing  
 and avoids concentrating. We recommend to set a width of `printMargin + 20` cols.
 
+<!-- TODO: screenshot -->
+
 While very nice on its own, this can be used as a base for
-other themes, as it happens on [Woodance](https://github.com/jmendeth/nice-ace-woodance).
+other (nicer?) themes, as it happens on [Woodance](https://github.com/jmendeth/nice-ace-woodance).
 
 ## History
 
@@ -66,19 +68,20 @@ You can also launch a webserver to try the theme:
 ./demo
 ```
 
-Remember, you must have Node and NPM installed.
+It'll print the URL you have to browse.
 
 ## Why *Ubuntu Mono*?
 
  - The shapes are a bit more rounded and look better than Menlo or Monaco.
  - It's not Mac-specific (no platform discrimination).
- - This is open-source, the font should also be.
+ - Ambiance is open-source, the font should also be.
  - The hinting on bold text is better.
 
 ## Glyphicons legality?
 
-Glyphicons Halflings (the originally used ones) aren't available for free,  
-and they present the inconvenient that they can't be easily shadowed.
+Glyphicons Halflings (the originally used ones) aren't available  
+for free, and (as any image icons) they present the inconvenient  
+that they can't be easily shadowed.
 
 So I've taken the normal Glyphicons set and vectorized them to a font.  
 Then `@font-face`d that font and put a `text-shadow` for the effects.
